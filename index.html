@@ -1,0 +1,939 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GITO - Animated Infographic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+ --yellow:#FFD64F;
+ --pale:#FFF4CD;
+ --navy:#202B40;
+ --text:#303A4B;
+ --muted:#697386;
+ --white:#FFFFFF;
+ --bg:#F8F9FC;
+ --border:#E9EAF0;
+}
+
+* {
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+html {scroll-behavior:smooth;}
+
+body {
+ font-family:'Poppins',sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ overflow-x:hidden;
+}
+
+/* BACKGROUND ANIMATION */
+
+.bg-shape {
+ position:fixed;
+ border-radius:50%;
+ pointer-events:none;
+ z-index:-1;
+ filter:blur(1px);
+ animation:float 8s ease-in-out infinite;
+}
+
+.shape1 {
+ width:190px;
+ height:190px;
+ background:#FFE89A55;
+ top:25%;
+ left:-90px;
+}
+
+.shape2 {
+ width:150px;
+ height:150px;
+ background:#DDE6F555;
+ right:-60px;
+ top:65%;
+ animation-delay:2s;
+}
+
+@keyframes float {
+ 0%,100% {transform:translateY(0) rotate(0);}
+ 50% {transform:translateY(-35px) rotate(15deg);}
+}
+
+/* NAVBAR */
+
+nav {
+ padding:18px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:#FFFFFFE8;
+ backdrop-filter:blur(15px);
+ position:sticky;
+ top:0;
+ z-index:100;
+ border-bottom:1px solid #E9EAF0;
+}
+
+.logo {
+ font-family:'Outfit';
+ font-weight:800;
+ font-size:22px;
+ color:var(--navy);
+}
+
+.logo span {color:#D29B12;}
+
+.nav-label {
+ background:var(--pale);
+ color:#72530B;
+ border-radius:30px;
+ padding:9px 17px;
+ font-size:10px;
+ font-weight:700;
+}
+
+/* HERO */
+
+.hero {
+ background:var(--navy);
+ padding:85px 8%;
+ position:relative;
+ overflow:hidden;
+ border-radius:0 0 55px 55px;
+}
+
+.hero-content {
+ position:relative;
+ z-index:3;
+ animation:heroIn 1s ease both;
+}
+
+@keyframes heroIn {
+ from {opacity:0;transform:translateY(45px);}
+ to {opacity:1;transform:translateY(0);}
+}
+
+.hero-tag {
+ color:var(--yellow);
+ font-size:11px;
+ letter-spacing:3px;
+ font-weight:700;
+ margin-bottom:22px;
+}
+
+.hero h1 {
+ font-family:'Outfit';
+ font-size:clamp(60px,11vw,115px);
+ line-height:.95;
+ color:white;
+ letter-spacing:-5px;
+ font-weight:800;
+}
+
+.hero h1 span {
+ color:var(--yellow);
+ display:inline-block;
+ animation:pop 2.5s ease-in-out infinite;
+}
+
+@keyframes pop {
+ 0%,100% {transform:scale(1);}
+ 50% {transform:scale(1.08);}
+}
+
+.hero-desc {
+ max-width:500px;
+ color:#E1E7F0;
+ font-size:13px;
+ line-height:2;
+ margin-top:23px;
+}
+
+.hero-tags {
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:28px;
+}
+
+.hero-tags span {
+ background:var(--yellow);
+ color:var(--navy);
+ padding:10px 17px;
+ border-radius:30px;
+ font-size:10px;
+ font-weight:700;
+ transition:.3s;
+}
+
+.hero-tags span:hover {
+ transform:translateY(-5px) rotate(-2deg);
+ background:white;
+}
+
+.hero-circle {
+ position:absolute;
+ border-radius:50%;
+ background:var(--yellow);
+ opacity:.9;
+}
+
+.circle1 {
+ width:280px;
+ height:280px;
+ right:-100px;
+ top:-120px;
+ animation:rotate 15s linear infinite;
+}
+
+.circle2 {
+ width:90px;
+ height:90px;
+ right:18%;
+ bottom:-40px;
+ background:#FFFFFF22;
+ animation:float 5s infinite;
+}
+
+@keyframes rotate {
+ to {transform:rotate(360deg);}
+}
+
+/* MAIN */
+
+.container {
+ max-width:1150px;
+ margin:auto;
+ padding:30px 7% 85px;
+}
+
+/* SECTION */
+
+.section-heading {
+ display:flex;
+ align-items:center;
+ gap:15px;
+ margin:65px 0 25px;
+}
+
+.section-number {
+ width:53px;
+ height:53px;
+ background:var(--yellow);
+ border-radius:19px;
+ display:grid;
+ place-items:center;
+ color:var(--navy);
+ font-family:'Outfit';
+ font-size:20px;
+ font-weight:800;
+ box-shadow:0 7px 15px #D6A92D30;
+}
+
+.section-heading h2 {
+ font-family:'Outfit';
+ font-size:29px;
+ color:var(--navy);
+}
+
+.section-heading p {
+ font-size:10px;
+ color:var(--muted);
+ letter-spacing:1.5px;
+ font-weight:600;
+}
+
+/* PLACE CARD */
+
+.place-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:18px;
+}
+
+.place-card {
+ background:white;
+ padding:25px;
+ border-radius:28px;
+ border:1px solid var(--border);
+ border-bottom:5px solid var(--yellow);
+ transition:transform .4s,box-shadow .4s;
+ position:relative;
+ overflow:hidden;
+}
+
+.place-card::after {
+ content:"";
+ position:absolute;
+ width:100px;
+ height:100px;
+ background:var(--pale);
+ border-radius:50%;
+ right:-50px;
+ bottom:-50px;
+ transition:.5s;
+}
+
+.place-card:hover::after {
+ transform:scale(2);
+}
+
+.place-card:hover {
+ transform:translateY(-9px) scale(1.015);
+ box-shadow:0 18px 35px #202B4017;
+}
+
+.place-icon {
+ width:55px;
+ height:55px;
+ background:var(--pale);
+ border-radius:19px;
+ display:grid;
+ place-items:center;
+ font-size:26px;
+ margin-bottom:20px;
+ position:relative;
+ z-index:2;
+ transition:.5s;
+}
+
+.place-card:hover .place-icon {
+ transform:rotate(-10deg) scale(1.12);
+ background:var(--yellow);
+}
+
+.place-card h3,
+.place-card p {
+ position:relative;
+ z-index:2;
+}
+
+.place-card h3 {
+ font-size:14px;
+ font-weight:800;
+ color:var(--navy);
+ margin-bottom:10px;
+}
+
+.place-card p {
+ color:#586275;
+ font-size:11px;
+ line-height:1.95;
+}
+
+/* INFORMATION BOX */
+
+.info-box {
+ background:var(--navy);
+ color:white;
+ border-radius:28px;
+ padding:30px;
+ margin-top:20px;
+ position:relative;
+ overflow:hidden;
+ transition:.4s;
+}
+
+.info-box:hover {
+ transform:scale(1.01);
+}
+
+.info-box h3 {
+ color:var(--yellow);
+ font-family:'Outfit';
+ font-size:21px;
+ margin-bottom:10px;
+}
+
+.info-box p {
+ font-size:12px;
+ color:#E6EAF1;
+ line-height:2;
+}
+
+/* TIMELINE */
+
+.timeline {
+ border-left:3px solid var(--yellow);
+ margin-left:15px;
+ padding-left:28px;
+}
+
+.timeline-card {
+ position:relative;
+ background:white;
+ border-radius:25px;
+ border:1px solid var(--border);
+ padding:25px;
+ margin-bottom:20px;
+ transition:.4s;
+}
+
+.timeline-card:hover {
+ transform:translateX(8px);
+ box-shadow:0 10px 25px #0000000D;
+}
+
+.timeline-card::before {
+ content:"";
+ width:17px;
+ height:17px;
+ border-radius:50%;
+ background:var(--yellow);
+ border:5px solid var(--bg);
+ position:absolute;
+ left:-40px;
+ top:27px;
+ transition:.4s;
+}
+
+.timeline-card:hover::before {
+ transform:scale(1.4);
+}
+
+.date {
+ display:inline-block;
+ background:var(--pale);
+ color:#765500;
+ border-radius:30px;
+ padding:8px 14px;
+ font-size:10px;
+ font-weight:800;
+ margin-bottom:12px;
+}
+
+.timeline-card h3 {
+ color:var(--navy);
+ font-size:16px;
+ margin-bottom:8px;
+}
+
+.timeline-card p {
+ font-size:11px;
+ color:#586275;
+ line-height:1.95;
+}
+
+/* DAILY */
+
+.daily-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px;
+}
+
+.daily-card {
+ background:var(--pale);
+ padding:23px;
+ border-radius:25px;
+ transition:.4s;
+ border:1px solid #F1E1A9;
+}
+
+.daily-card:hover {
+ transform:translateY(-8px) rotate(-1deg);
+ background:var(--yellow);
+}
+
+.daily-card .emoji {
+ font-size:31px;
+ display:inline-block;
+ animation:bounce 3s infinite;
+}
+
+@keyframes bounce {
+ 0%,100% {transform:translateY(0);}
+ 50% {transform:translateY(-8px);}
+}
+
+.daily-card h3 {
+ color:var(--navy);
+ font-family:'Outfit';
+ margin:12px 0 7px;
+ font-size:17px;
+}
+
+.daily-card p {
+ font-size:11px;
+ line-height:1.9;
+ color:#505D70;
+}
+
+/* MOOD */
+
+.mood-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px;
+}
+
+.mood-card {
+ padding:26px;
+ border-radius:28px;
+ border:1px solid var(--border);
+ background:white;
+ transition:.4s;
+}
+
+.mood-card:nth-child(1) {background:#FFF0D9;}
+.mood-card:nth-child(2) {background:#FCEBED;}
+.mood-card:nth-child(3) {background:#E9F3EC;}
+
+.mood-card:hover {
+ transform:translateY(-9px);
+ box-shadow:0 15px 30px #00000012;
+}
+
+.mood-icon {
+ font-size:38px;
+ display:inline-block;
+ margin-bottom:20px;
+ transition:.4s;
+}
+
+.mood-card:hover .mood-icon {
+ transform:rotate(15deg) scale(1.2);
+}
+
+.mood-card h3 {
+ font-family:'Outfit';
+ color:var(--navy);
+ font-size:18px;
+ margin-bottom:10px;
+}
+
+.mood-card p {
+ font-size:11px;
+ color:#536074;
+ line-height:1.95;
+}
+
+/* CONCLUSION */
+
+.conclusion {
+ background:var(--yellow);
+ padding:38px;
+ border-radius:32px;
+ margin-top:70px;
+ position:relative;
+ overflow:hidden;
+}
+
+.conclusion::after {
+ content:"✳";
+ position:absolute;
+ right:25px;
+ bottom:-65px;
+ font-size:170px;
+ color:#FFFFFF55;
+ animation:rotate 20s linear infinite;
+}
+
+.conclusion small {
+ color:#644B0A;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:3px;
+}
+
+.conclusion h2 {
+ font-family:'Outfit';
+ font-size:clamp(30px,5vw,45px);
+ color:var(--navy);
+ margin:17px 0;
+ line-height:1.15;
+ position:relative;
+ z-index:2;
+}
+
+.conclusion p {
+ max-width:700px;
+ font-size:12px;
+ color:#403A2B;
+ line-height:2;
+ position:relative;
+ z-index:2;
+}
+
+/* FOOTER */
+
+footer {
+ background:var(--navy);
+ padding:40px 15px;
+ text-align:center;
+ border-radius:40px 40px 0 0;
+}
+
+footer h3 {
+ font-family:'Outfit';
+ color:white;
+ font-size:23px;
+}
+
+footer h3 span {color:var(--yellow);}
+
+footer p {
+ color:#D6DCE6;
+ font-size:10px;
+ margin-top:10px;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal {
+ opacity:0;
+ transform:translateY(35px);
+ transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.show {
+ opacity:1;
+ transform:translateY(0);
+}
+
+/* ANIMATED LINE */
+
+.line-decoration {
+ width:80px;
+ height:5px;
+ background:var(--yellow);
+ border-radius:20px;
+ margin-top:12px;
+ animation:lineGrow 2s ease infinite alternate;
+}
+
+@keyframes lineGrow {
+ from {width:35px;}
+ to {width:100px;}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:750px) {
+ .place-grid {grid-template-columns:repeat(2,1fr);}
+ .mood-grid {grid-template-columns:1fr;}
+ .hero h1 {letter-spacing:-3px;}
+}
+
+@media(max-width:480px) {
+ .place-grid,.daily-grid {grid-template-columns:1fr;}
+ .hero {padding:60px 7%;}
+ .hero h1 {font-size:65px;}
+ .container {padding-left:6%;padding-right:6%;}
+ .section-heading h2 {font-size:24px;}
+ .conclusion {padding:27px;}
+}
+
+/* ACCESSIBILITY */
+
+@media(prefers-reduced-motion:reduce) {
+ *,*::before,*::after {
+  animation-duration:.01ms !important;
+  animation-iteration-count:1 !important;
+  transition-duration:.01ms !important;
+  scroll-behavior:auto !important;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-shape shape1"></div>
+<div class="bg-shape shape2"></div>
+
+<nav>
+ <div class="logo">GITO<span>.</span>STORY</div>
+ <div class="nav-label">INFOGRAFIS 2026</div>
+</nav>
+
+<header class="hero">
+
+ <div class="hero-circle circle1"></div>
+ <div class="hero-circle circle2"></div>
+
+ <div class="hero-content">
+  <div class="hero-tag">BAHASA INDONESIA • LITERASI</div>
+
+  <h1><br>TUKANG CUKUR <span>_</span></h1>
+
+  <div class="line-decoration"></div>
+
+  <p class="hero-desc">
+   Mengenal latar tempat, waktu, dan suasana dalam cerita
+   yang menggambarkan kehidupan Gito di tengah pergolakan
+   sejarah Indonesia.
+  </p>
+
+  <div class="hero-tags">
+   <span>19 • FAISAL</span>
+   <span>11 • FAJRI</span>
+   <span>15 • KEVIN</span>
+   <span>33 • TEGUH</span>
+  </div>
+ </div>
+</header>
+
+<main class="container">
+
+<!-- TEMPAT -->
+
+<div class="section-heading reveal">
+ <div class="section-number">01</div>
+ <div>
+  <h2>Latar Tempat</h2>
+  <p>LOKASI PERISTIWA DALAM CERITA</p>
+ </div>
+</div>
+
+<div class="place-grid">
+
+<div class="place-card reveal">
+ <div class="place-icon">🏘️</div>
+ <h3>Getas Pejaten</h3>
+ <p>Kawasan pinggiran kota Kudus yang menjadi tempat tinggal Gito.</p>
+</div>
+
+<div class="place-card reveal">
+ <div class="place-icon">🛣️</div>
+ <h3>Jalan Daendels, Setasiun & Bitingan</h3>
+ <p>Jalur yang sering dilewati Gito menuju sekolah atau tempat lain.</p>
+</div>
+
+<div class="place-card reveal">
+ <div class="place-icon">🚉</div>
+ <h3>Pasar Johar dan Stasiun</h3>
+ <p>Tempat Gito lewat sepulang sekolah untuk memunguti remah-remah gula jawa.</p>
+</div>
+
+<div class="place-card reveal">
+ <div class="place-icon">🍲</div>
+ <h3>Kedai Gulai Kambing Kakek Leman</h3>
+ <p>Tempat Kakek Leman bekerja atau mangkal, dekat pohon cemara dan simpang tiga jalan.</p>
+</div>
+
+<div class="place-card reveal">
+ <div class="place-icon">🌳</div>
+ <h3>Lapangan Terbuka / Alun-Alun Kudus</h3>
+ <p>Tempat penembakan massal atau eksekusi oleh tentara PKI maupun pasukan Siliwangi di bawah pohon beringin.</p>
+</div>
+
+<div class="place-card reveal">
+ <div class="place-icon">🏭</div>
+ <h3>Bekas Pabrik Rokok Nitisemito</h3>
+ <p>Lokasi pertempuran hebat dan tempat ditemukannya mayat tukang cukur di akhir cerita.</p>
+</div>
+
+<div class="place-card reveal">
+ <div class="place-icon">🏚️</div>
+ <h3>Kawasan Sandulok</h3>
+ <p>Kawasan pelacuran dan tempat perlindungan bawah tanah di pinggir kota.</p>
+</div>
+
+</div>
+
+<div class="info-box reveal">
+ <h3>📍 Kesimpulan Latar Tempat</h3>
+ <p>Cerita banyak berlangsung di kawasan Kudus, mulai dari permukiman, jalan raya, pasar, stasiun, hingga tempat-tempat yang menjadi saksi peristiwa sejarah.</p>
+</div>
+
+<!-- WAKTU -->
+
+<div class="section-heading reveal">
+ <div class="section-number">02</div>
+ <div>
+  <h2>Latar Waktu</h2>
+  <p>PERIODE SEJARAH DALAM CERITA</p>
+ </div>
+</div>
+
+<div class="timeline">
+
+<div class="timeline-card reveal">
+ <span class="date">AKHIR SEPTEMBER 1948</span>
+ <h3>Kedatangan Tentara PKI</h3>
+ <p>Suasana mulai mencekam dengan kedatangan tentara PKI (Partai Komunis Indonesia).</p>
+</div>
+
+<div class="timeline-card reveal">
+ <span class="date">DESEMBER 1948</span>
+ <h3>Kedatangan Pasukan Belanda</h3>
+ <p>Pasukan Siliwangi meninggalkan Kudus. Kemudian pesawat "Cocor Merah" dan pasukan Belanda datang menduduki Kudus.</p>
+</div>
+
+<div class="timeline-card reveal">
+ <span class="date">DESEMBER 1949</span>
+ <h3>Penarikan Tentara Belanda</h3>
+ <p>Tentara Belanda ditarik keluar menyusul hasil Konferensi Meja Bundar (KMB) di Belanda.</p>
+</div>
+
+</div>
+
+<div class="section-heading reveal">
+ <div class="section-number">⏰</div>
+ <div>
+  <h2>Waktu Sehari-hari</h2>
+  <p>AKTIVITAS DALAM CERITA</p>
+ </div>
+</div>
+
+<div class="daily-grid">
+
+<div class="daily-card reveal">
+ <div class="emoji">🌅</div>
+ <h3>Pagi Hari</h3>
+ <p>Aktivitas Gito dan perjalanan menuju sekolah.</p>
+</div>
+
+<div class="daily-card reveal">
+ <div class="emoji">☀️</div>
+ <h3>Siang Hari</h3>
+ <p>Gito pulang sekolah dan melewati berbagai tempat.</p>
+</div>
+
+<div class="daily-card reveal">
+ <div class="emoji">🌙</div>
+ <h3>Malam Hari</h3>
+ <p>Suasana sering diwarnai tembakan gerilyawan atau pasukan liar.</p>
+</div>
+
+</div>
+
+<!-- SUASANA -->
+
+<div class="section-heading reveal">
+ <div class="section-number">03</div>
+ <div>
+  <h2>Latar Suasana</h2>
+  <p>GAMBARAN KEADAAN DALAM CERITA</p>
+ </div>
+</div>
+
+<div class="mood-grid">
+
+<div class="mood-card reveal">
+ <div class="mood-icon">⚡</div>
+ <h3>Mencekam dan Menegangkan</h3>
+ <p>Teror tentara PKI, penembakan, penangkapan orang-orang, serangan Belanda, hingga kemunculan tentara liar NII.</p>
+</div>
+
+<div class="mood-card reveal">
+ <div class="mood-icon">🥀</div>
+ <h3>Mengharukan dan Menyedihkan</h3>
+ <p>Kemiskinan keluarga Gito yang hanya makan sekali sehari dengan beras jagung atau ketela pohon, serta nasib orang-orang yang ditangkap.</p>
+</div>
+
+<div class="mood-card reveal">
+ <div class="mood-icon">🌤️</div>
+ <h3>Tenang</h3>
+ <p>Keadaan sempat mereda ketika pasukan berganti atau situasi mulai membaik sebelum ketegangan muncul kembali.</p>
+</div>
+
+<!-- SUDUT PANDANG -->
+
+<div class="section-heading reveal">
+ <div class="section-number">04</div>
+ <div>
+  <h2>Sudut Pandang</h2>
+  <p>CARA PENGARANG MENYAMPAIKAN CERITA</p>
+ </div>
+</div>
+
+<div class="info-box reveal">
+ <h3>👁️ Sudut Pandang Orang Ketiga</h3>
+ <p>
+  Cerpen Gito menggunakan sudut pandang orang ketiga.
+  Pengarang menceritakan kehidupan Gito dengan menyebut
+  nama tokoh atau menggunakan kata ganti orang ketiga.
+  Pengarang menggambarkan pengalaman, keadaan, dan
+  peristiwa yang dialami Gito selama masa pergolakan sejarah.
+ </p>
+</div>
+
+<!-- NILAI MORAL -->
+
+<div class="section-heading reveal">
+ <div class="section-number">05</div>
+ <div>
+  <h2>Nilai Moral</h2>
+  <p>PESAN DAN PELAJARAN DALAM CERITA</p>
+ </div>
+</div>
+
+<div class="mood-grid">
+
+ <div class="mood-card reveal">
+  <div class="mood-icon">💪</div>
+  <h3>Keteguhan dan Kesabaran</h3>
+  <p>
+   Kita harus tetap kuat, sabar, dan berusaha menghadapi
+   kesulitan hidup meskipun berada dalam keadaan sulit.
+  </p>
+ </div>
+
+ <div class="mood-card reveal">
+  <div class="mood-icon">❤️</div>
+  <h3>Kepedulian Sesama</h3>
+  <p>
+   Kita harus memiliki rasa empati, saling membantu,
+   dan peduli terhadap orang lain yang sedang mengalami
+   kesulitan.
+  </p>
+ </div>
+
+ <div class="mood-card reveal">
+  <div class="mood-icon">🕊️</div>
+  <h3>Menghargai Perdamaian</h3>
+  <p>
+   Kekerasan dan peperangan membawa penderitaan.
+   Oleh karena itu, kita harus menjaga persatuan,
+   menghargai kehidupan, dan menghindari konflik.
+  </p>
+ </div>
+
+</div>
+
+</div>
+
+<!-- KESIMPULAN -->
+
+<div class="conclusion reveal">
+ <small>FINAL SUMMARY • 2026</small>
+ <h2>SEJARAH DI BALIK<br>KEHIDUPAN GITO.</h2>
+ <p>Cerita menggambarkan kehidupan Gito di tengah situasi Kudus yang penuh konflik pada masa revolusi. Berbagai peristiwa menunjukkan perjuangan masyarakat menghadapi kemiskinan, ketakutan, dan pergolakan sejarah.</p>
+</div>
+
+</main>
+
+<footer>
+ <h3>GITO<span>.</span>STORY</h3>
+ <p>EXPLORE THE STORY • UNDERSTAND THE HISTORY</p>
+ <p>INFOGRAFIS BAHASA INDONESIA • 2026</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting) {
+   entry.target.classList.add('show');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:0.12});
+
+document.querySelectorAll('.reveal').forEach(el => {
+ observer.observe(el);
+});
+</script>
+
+</body>
+</html>
